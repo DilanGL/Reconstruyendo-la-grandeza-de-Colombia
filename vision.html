@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuestas y Hoja de Ruta - Grandeza Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="font-bold text-xl tracking-tight text-slate-900">Grandeza<span class="text-blue-600">Colombia</span></a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
+                    <a href="vision.html" class="text-sm font-medium text-blue-600">Propuestas y Visión</a>
+                    <a href="repositorio.html" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Repositorio</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="mb-12 border-l-4 border-blue-600 pl-6">
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Propuestas y Hoja de Ruta</h2>
+            <p class="text-slate-600 mt-2 max-w-2xl">Transformación estructural basada en el Trípode de la Modernidad: Noruega y Suiza como horizontes de excelencia.</p>
+        </div>
+
+        <div class="flex flex-wrap border-b border-slate-200 mb-8 gap-2">
+            <button onclick="openTab(event, 'vision-pilar')" class="tab-link px-6 py-3 font-semibold text-sm border-b-2 border-blue-600 text-blue-600 transition-all">
+                <i class="fa-solid fa-eye mr-2"></i>Visión y Pilares
+            </button>
+            <button onclick="openTab(event, 'proyectos-ancla')" class="tab-link px-6 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-all">
+                <i class="fa-solid fa-gears mr-2"></i>Proyectos Ancla
+            </button>
+            <button onclick="openTab(event, 'hoja-ruta')" class="tab-link px-6 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-700 transition-all">
+                <i class="fa-solid fa-map-location-dot mr-2"></i>Hoja de Ruta
+            </button>
+        </div>
+
+        <div id="vision-pilar" class="tab-content active">
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 text-blue-600"><i class="fa-solid fa-graduation-cap text-xl"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Educación de Excelencia</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Transformación del modelo pedagógico hacia la meritocracia y el desarrollo de competencias de alto nivel.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4 text-amber-600"><i class="fa-solid fa-microchip text-xl"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Innovación Productiva</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Creación de un ecosistema científico-tecnológico que conecte la investigación con la industria global.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mb-4 text-slate-600"><i class="fa-solid fa-gavel text-xl"></i></div>
+                    <h3 class="font-bold text-slate-900 mb-2">Justicia Preventiva</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">Implementación de auditorías mediante Inteligencia Artificial para detectar anomalías fiscales en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="proyectos-ancla" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6"><i class="fa-solid fa-bridge text-2xl"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">1. Infraestructura y Conectividad</h3>
+                    <ul class="space-y-4">
+                        <li class="border-l-4 border-blue-500 pl-4">
+                            <strong class="block text-slate-800">Red de Metro Subterráneo</strong>
+                            <p class="text-sm text-slate-600">Eje de movilidad urbana de alta eficiencia.</p>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+        </div>
+
+        <div id="hoja-ruta" class="tab-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-2xl border-l-4 border-blue-600 shadow-sm">
+                    <div class="flex items-center mb-6">
+                        <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold mr-3">Fase 1</span>
+                        <h3 class="text-xl font-bold text-slate-800">Corto Plazo (1-5 años)</h3>
+                    </div>
+                    <ul class="space-y-4 border-l border-blue-200 ml-2 pl-4">
+                        <li><span class="text-xs font-bold text-blue-600 uppercase">Año 1</span> <p class="text-slate-700">Plataforma de Arte y Fondo de Innovación.</p></li>
+                        <li><span class="text-xs font-bold text-blue-600 uppercase">Año 2</span> <p class="text-slate-700">Despliegue de Auditoría con IA.</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
+        <p class="text-sm">Grandeza Colombia © 2026 - Hacia un estándar de excelencia nacional.</p>
+    </footer>
+
+    <script src="js/global.js"></script>
+</body>
+</html>
