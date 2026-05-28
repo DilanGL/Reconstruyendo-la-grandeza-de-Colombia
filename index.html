@@ -43,15 +43,33 @@
                         "La historia de las naciones no está escrita en piedra, sino en la voluntad inquebrantable de sus ciudadanos."
                     </p>
                 </div>
+               <!-- Columna Multimedia (Contenedor Inteligente) con Selector Dinámico -->
                 <div class="md:w-1/2">
                     <div id="media-container" class="relative aspect-video bg-black rounded-2xl shadow-2xl border border-white/10 overflow-hidden group">
+                        
+                        <!-- Botones selectores superiores -->
+                        <div class="absolute top-4 left-4 z-30 flex space-x-2 bg-slate-900/80 backdrop-blur-md p-1 rounded-xl border border-white/10">
+                            <button id="btn-show-img" onclick="switchMedia('img')" class="px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white">
+                                <i class="fa-solid fa-image mr-1"></i> Imagen
+                            </button>
+                            <button id="btn-show-video" onclick="switchMedia('video')" class="px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white">
+                                <i class="fa-solid fa-video mr-1"></i> Video
+                            </button>
+                        </div>
+                
+                        <!-- Elemento Imagen -->
                         <img id="hero-img" src="https://lh3.googleusercontent.com/d/1Jh0CsZD9LDNPKhhmqVJndMGNRInKwAi3" alt="Vista Principal" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                
+                        <!-- Elemento Video -->
                         <video id="hero-video" class="hidden w-full h-full object-cover" loop playsinline muted>
-                            <source src="" type="video/mp4">
+                            <source src="https://drive.google.com/uc?export=download&id=1fDnezTwzmC2FRfkFpgq-q4WjAJXjhUOE" type="video/mp4">
                         </video>
+                
+                        <!-- Controles flotantes del reproductor -->
                         <div id="controls-placeholder"></div>
+                
                     </div>
-                    <p id="media-caption" class="text-center text-slate-500 text-xs mt-3 italic"></p>
+                    <p id="media-caption" class="text-center text-slate-500 text-xs mt-3 italic">Mostrando imagen oficial del proyecto</p>
                 </div>
             </div>
         </div>
