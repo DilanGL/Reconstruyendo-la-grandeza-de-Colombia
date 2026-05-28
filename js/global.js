@@ -43,29 +43,55 @@ const bibliotecaArchivos = [
 function initHeroMedia() {
     const video = document.getElementById('hero-video');
     const image = document.getElementById('hero-img');
-    const placeholder = document.getElementById('controls-placeholder');
-    const caption = document.getElementById('media-caption');
+    
+    if (!video || !image) return;
 
-    if (!video || !image) return; // Previene errores si no estamos en index.html
-
-    const hasVideo = videoPath && videoPath !== "";
-
-    if (hasVideo) {
+    // Asignar recursos base en segundo plano
+    image.src = imagePath;
+    if (videoPath && videoPath !== "") {
         video.querySelector('source').src = videoPath;
         video.load();
-        video.classList.remove('hidden');
-        image.classList.add('hidden');
-        video.play().catch(() => console.log("Autoplay esperando interacción"));
+    }
+    
+    // Forzamos a que la página inicie mostrando la IMAGEN por defecto
+    switchMedia('img');
+}
 
+function switchMedia(type) {
+    const video = document.getElementById('hero-video');
+    const image = document.getElementById('hero-img');
+    const placeholder = document.getElementById('controls-placeholder');
+    const caption = document.getElementById('media-caption');
+    const btnImg = document.getElementById('btn-show-img');
+    const btnVideo = document.getElementById('btn-show-video');
+
+    if (!video || !image) return;
+
+    if (type === 'video') {
+        // Validar si hay un video configurado
+        if (!videoPath || videoPath === "") {
+            alert("No hay un video configurado en este momento.");
+            return;
+        }
+
+        // Mostrar video y ocultar imagen
+        image.classList.add('hidden');
+        video.classList.remove('hidden');
+        
+        // Estilos del selector (Video activo en Azul, Imagen inactiva en Gris)
+        btnVideo.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white";
+        btnImg.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
+
+        // Inyectar los controles flotantes del video (se movieron aquí)
         placeholder.innerHTML = `
-            <div class="absolute inset-0 flex flex-col justify-between p-4 video-controls-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div class="absolute inset-0 flex flex-col justify-between p-4 video-controls-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                 <div class="flex justify-end">
                     <span class="bg-blue-600/80 backdrop-blur-sm text-[10px] text-white uppercase font-bold px-2 py-1 rounded">Video Proyectivo</span>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex space-x-3">
                         <button onclick="togglePlay()" class="w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center backdrop-blur-md text-white">
-                            <i id="play-icon" class="fa-solid fa-play"></i>
+                            <i id="play-icon" class="fa-solid fa-pause"></i>
                         </button>
                         <button onclick="toggleMute()" class="w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center backdrop-blur-md text-white">
                             <i id="volume-icon" class="fa-solid fa-volume-xmark"></i>
@@ -77,10 +103,22 @@ function initHeroMedia() {
                 </div>
             </div>
         `;
-        caption.innerText = "Pulsa el altavoz para activar el sonido o expande para ver en grande";
+        
+        caption.innerText = "Reproduciendo video. Pasa el cursor por encima para ver los controles.";
+        video.play().catch(() => console.log("Autoplay esperando interacción"));
+
     } else {
-        image.src = imagePath;
-        caption.innerText = "Imagen del Plan Estratégico Nacional";
+        // Si elige Imagen
+        video.pause();
+        video.classList.add('hidden');
+        image.classList.remove('hidden');
+        placeholder.innerHTML = ''; // Limpiar controles para que no estorben sobre la imagen
+
+        // Estilos del selector (Imagen activa en Azul, Video inactivo en Gris)
+        btnImg.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white";
+        btnVideo.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
+
+        caption.innerText = "Mostrando imagen oficial del Plan Estratégico.";
     }
 }
 
