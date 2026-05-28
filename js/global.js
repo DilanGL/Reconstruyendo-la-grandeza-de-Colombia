@@ -1,5 +1,5 @@
 // --- CONFIGURACIÓN DE RUTAS MULTIMEDIA HERO ---
-const videoPath = ""; 
+const videoPath = "https://lh3.googleusercontent.com/d/1fDnezTwzmC2FRfkFpgq-q4WjAJXjhUOE"; 
 const imagePath = "https://lh3.googleusercontent.com/d/1Jh0CsZD9LDNPKhhmqVJndMGNRInKwAi3"; 
 
 // --- BASE DE DATOS DEL REPOSITORIO ---
