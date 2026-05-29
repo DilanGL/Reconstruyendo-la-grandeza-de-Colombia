@@ -105,7 +105,8 @@ function switchMedia(type) {
         `;
         
         caption.innerText = "Reproduciendo video. Pasa el cursor por encima para ver los controles.";
-        video.play().catch(() => console.log("Autoplay esperando interacción"));
+        video.muted = true;
+        video.play().catch((error) => console.log("Autoplay bloqueado o error de carga de Drive:", error));
 
     } else {
         // Si elige Imagen
