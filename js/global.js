@@ -246,10 +246,13 @@ function cargarBiblioteca() {
     });
 }
 
+// --- MODIFICADO PARA COMPORTARSE BIEN EN EL SELECT ---
 function cambiarVersion(select, id) {
-    const ruta = select.value;
-    document.getElementById(`ver-${id}`).href = ruta;
-    document.getElementById(`descargar-${id}`).href = ruta;
+    const rutaDescarga = select.value;
+    const rutaVer = obtenerRutaVer(rutaDescarga);
+    
+    document.getElementById(`ver-${id}`).href = rutaVer;
+    document.getElementById(`descargar-${id}`).href = rutaDescarga;
 }
 
 // --- SELECCIÓN DE ENCUESTAS ---
