@@ -276,6 +276,24 @@ function selectSurvey(type) {
     }
 }
 
+// --- CONTROL DEL MENÚ DE NAVEGACIÓN EN MÓVILES ---
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    
+    if (!menu) return;
+
+    // Alternar la clase 'hidden' de Tailwind para mostrar/ocultar
+    menu.classList.toggle('hidden');
+    
+    // Cambiar el icono entre las tres barras (bars) y una X (xmark)
+    if (menu.classList.contains('hidden')) {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+    }
+}
+
 // Ejecución al cargar la página
 window.addEventListener('load', () => {
     initHeroMedia();
