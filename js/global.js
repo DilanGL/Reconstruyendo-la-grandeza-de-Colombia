@@ -341,7 +341,7 @@ function toggleMobileMenu() {
 
 // Ejecución al cargar la página
 window.addEventListener('load', () => {
-        cargarNavBar();
+        cargarNavbar();
         initHeroMedia();
         cargarBiblioteca();
 });
