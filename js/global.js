@@ -287,6 +287,7 @@ async function cargarNavbar() {
         
         if (rutaActual.includes("vision.html")) paginaActiva = "vision";
         else if (rutaActual.includes("repositorio.html")) paginaActiva = "repositorio";
+        else if (rutaActual.includes("participacion.html")) paginaActiva = "participacion";
 
         const enlaceActivo = contenedor.querySelector(`[data-link="${paginaActiva}"]`);
         if (enlaceActivo) {
@@ -309,6 +310,36 @@ function toggleMobileMenu() {
         icon.classList.replace('fa-xmark', 'fa-bars');
     } else {
         icon.classList.replace('fa-bars', 'fa-xmark');
+    }
+}
+
+// --- PORTAL DE PARTICIPACIÓN (CONTROL DE PESTAÑAS) ---
+function selectSurvey(type) {
+    const targetTab = document.getElementById(`survey-${type}`);
+    const targetCard = document.getElementById(`option-${type}`);
+    
+    // Si no existen estos elementos en la página actual (ej. estamos en index.html), 
+    // detenemos la función de inmediato para evitar errores en la consola.
+    if (!targetTab || !targetCard) return;
+
+    // Desactivar todas las pestañas y quitar selecciones previas
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.survey-card').forEach(el => {
+        el.classList.remove('selected', 'border-blue-600');
+        el.style.borderColor = 'transparent'; // Limpia bordes personalizados
+    });
+    
+    // Activar la pestaña y tarjeta seleccionada
+    targetTab.classList.add('active');
+    targetCard.classList.add('selected');
+    
+    // Aplicar el color de borde correspondiente según la tarjeta
+    if (type === 'new') {
+        targetCard.classList.add('border-blue-600');
+    } else if (type === 'known') {
+        targetCard.style.borderColor = '#9333ea'; // Púrpura estratégico
+    } else if (type === 'pqrs') {
+        targetCard.style.borderColor = '#059669'; // Esmeralda institucional
     }
 }
 
