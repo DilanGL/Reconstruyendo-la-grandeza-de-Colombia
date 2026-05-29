@@ -93,68 +93,41 @@ function initHeroMedia() {
 }
 
 function switchMedia(type) {
-    const video = document.getElementById('hero-video');
-    const image = document.getElementById('hero-img');
-    const placeholder = document.getElementById('controls-placeholder');
-    const caption = document.getElementById('media-caption');
+    const imgElement = document.getElementById('hero-img');
+    const videoWrapper = document.getElementById('hero-video-wrapper');
     const btnImg = document.getElementById('btn-show-img');
     const btnVideo = document.getElementById('btn-show-video');
+    const caption = document.getElementById('media-caption');
 
-    if (!video || !image) return;
+    if (!imgElement || !videoWrapper || !btnImg || !btnVideo || !caption) return;
 
-    if (type === 'video') {
-        // Validar si hay un video configurado
-        if (!videoPath || videoPath === "") {
-            alert("No hay un video configurado en este momento.");
-            return;
-        }
+    if (type === 'img') {
+        // Mostrar Imagen, Ocultar Video
+        imgElement.classList.remove('hidden');
+        videoWrapper.classList.add('hidden');
 
-        // Mostrar video y ocultar imagen
-        image.classList.add('hidden');
-        video.classList.remove('hidden');
-        
-        // Estilos del selector (Video activo en Azul, Imagen inactiva en Gris)
-        btnVideo.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white";
-        btnImg.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
-
-        // Inyectar los controles flotantes del video (se movieron aquí)
-        placeholder.innerHTML = `
-            <div class="absolute inset-0 flex flex-col justify-between p-4 video-controls-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                <div class="flex justify-end">
-                    <span class="bg-blue-600/80 backdrop-blur-sm text-[10px] text-white uppercase font-bold px-2 py-1 rounded">Video Proyectivo</span>
-                </div>
-                <div class="flex items-center justify-between">
-                    <div class="flex space-x-3">
-                        <button onclick="togglePlay()" class="w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center backdrop-blur-md text-white">
-                            <i id="play-icon" class="fa-solid fa-pause"></i>
-                        </button>
-                        <button onclick="toggleMute()" class="w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center backdrop-blur-md text-white">
-                            <i id="volume-icon" class="fa-solid fa-volume-xmark"></i>
-                        </button>
-                    </div>
-                    <button onclick="toggleFullScreen()" class="w-10 h-10 bg-white/20 hover:bg-white/40 rounded-full flex items-center justify-center backdrop-blur-md text-white">
-                        <i class="fa-solid fa-expand"></i>
-                    </button>
-                </div>
-            </div>
-        `;
-        
-        caption.innerText = "Reproduciendo video. Pasa el cursor por encima para ver los controles.";
-        video.muted = true;
-        video.play().catch((error) => console.log("Autoplay bloqueado o error de carga de Drive:", error));
-
-    } else {
-        // Si elige Imagen
-        video.pause();
-        video.classList.add('hidden');
-        image.classList.remove('hidden');
-        placeholder.innerHTML = ''; // Limpiar controles para que no estorben sobre la imagen
-
-        // Estilos del selector (Imagen activa en Azul, Video inactivo en Gris)
+        // Alternar diseño de botones
         btnImg.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white";
         btnVideo.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
+        
+        caption.textContent = "Mostrando imagen oficial del proyecto";
+        
+        // Pausar el video de YouTube al salir usando la API de YouTube enviando un postMessage
+        const iframe = document.getElementById('hero-youtube');
+        if (iframe) {
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
 
-        caption.innerText = "Mostrando imagen oficial del Plan Estratégico.";
+    } else if (type === 'video') {
+        // Mostrar Video, Ocultar Imagen
+        imgElement.classList.add('hidden');
+        videoWrapper.classList.remove('hidden');
+
+        // Alternar diseño de botones
+        btnImg.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all text-slate-400 hover:text-white";
+        btnVideo.className = "px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-blue-600 text-white";
+        
+        caption.textContent = "Reproduciendo presentación oficial desde YouTube";
     }
 }
 
