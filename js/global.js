@@ -294,8 +294,54 @@ function toggleMobileMenu() {
     }
 }
 
+// --- CARGA ASÍNCRONA DE LA BARRA DE NAVEGACIÓN ---
+async function cargarNavbar() {
+    const contenedor = document.getElementById('navbar-container');
+    if (!contenedor) return;
+
+    try {
+        // 1. Buscar el archivo HTML independiente
+        const respuesta = await fetch('components/navbar.html');
+        if (!respuesta.ok) throw new Error("No se pudo cargar el menú");
+        const htmlNav = await respuesta.text();
+        
+        // 2. Inyectarlo en la página
+        contenedor.innerHTML = htmlNav;
+
+        // 3. Resaltar la página activa automáticamente
+        const rutaActual = window.location.pathname;
+        let paginaActiva = "index"; // Por defecto
+        
+        if (rutaActual.includes("vision.html")) paginaActiva = "vision";
+        else if (rutaActual.includes("repositorio.html")) paginaActiva = "repositorio";
+
+        const enlaceActivo = contenedor.querySelector(`[data-link="${paginaActiva}"]`);
+        if (enlaceActivo) {
+            enlaceActivo.classList.remove('text-slate-600');
+            enlaceActivo.classList.add('text-blue-600');
+        }
+    } catch (error) {
+        console.error("Error al montar la navegación:", error);
+    }
+}
+
+// --- CONTROL DEL MENÚ DE NAVEGACIÓN EN MÓVILES ---
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-icon');
+    if (!menu) return;
+
+    menu.classList.toggle('hidden');
+    if (menu.classList.contains('hidden')) {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+    }
+}
+
 // Ejecución al cargar la página
 window.addEventListener('load', () => {
-    initHeroMedia();
-    cargarBiblioteca();
+        cargarNavBar();
+        initHeroMedia();
+        cargarBiblioteca();
 });
