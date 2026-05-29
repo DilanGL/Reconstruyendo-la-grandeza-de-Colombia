@@ -218,7 +218,8 @@ function cargarBiblioteca() {
             <option value="${v.ruta}">${v.nombre} ${v.fecha ? `(${v.fecha})` : ''}</option>
         `).join('');
 
-        const rutaInicial = archivo.versiones[0].ruta;
+        const rutaInicialDescarga = archivo.versiones[0].ruta;
+        const rutaInicialVer = obtenerRutaVer(rutaInicialDescarga);
 
         grid.innerHTML += `
             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow flex flex-col h-full">
@@ -233,10 +234,10 @@ function cargarBiblioteca() {
                         ${opcionesVersiones}
                     </select>
                     <div class="flex gap-2">
-                        <a id="ver-${archivo.id}" href="${rutaInicial}" target="_blank" class="flex-1 inline-flex justify-center items-center px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
+                        <a id="ver-${archivo.id}" href="${rutaInicialVer}" target="_blank" class="flex-1 inline-flex justify-center items-center px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors">
                             <i class="fa-solid fa-eye mr-2"></i> Ver
                         </a>
-                        <a id="descargar-${archivo.id}" href="${rutaInicial}" download class="flex-1 inline-flex justify-center items-center px-4 py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-lg transition-colors">
+                        <a id="descargar-${archivo.id}" href="${rutaInicialDescarga}" download class="flex-1 inline-flex justify-center items-center px-4 py-2 border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-bold rounded-lg transition-colors">
                             <i class="fa-solid fa-download mr-2"></i> Bajar
                         </a>
                     </div>
