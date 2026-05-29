@@ -4,7 +4,7 @@ const imagePath = "https://lh3.googleusercontent.com/d/1Jh0CsZD9LDNPKhhmqVJndMGN
 
 // --- BASE DE DATOS DEL REPOSITORIO ---
 const bibliotecaArchivos = [
-    { 
+        { 
         id: "modulos-cel", 
         titulo: "Módulos (Público)", 
         desc: "Análisis del contexto nacional e internacional.", 
@@ -13,10 +13,13 @@ const bibliotecaArchivos = [
         versiones: [
             { nombre: "Versión 2.4", ruta: "https://drive.google.com/uc?export=download&id=1iaOLRGaz3_ZMEdrp_mrtvn0O13yCVjeR", fecha: "May 2026" },
             { nombre: "Versión 2.3", ruta: "https://drive.google.com/uc?export=download&id=1GUbU8iRmBX9wC8hcCW4j8oyfau79BMkr", fecha: "Abr 2026" },
-            { nombre: "Versión 2.2", ruta: "https://drive.google.com/uc?export=download&id=16XbI-bqqjuPlIGlHeM57EFf-V82nv9i5", fecha: "Feb 2026" }
-        ]
-    },
-    { 
+            { nombre: "Versión 2.2", ruta: "https://drive.google.com/uc?export=download&id=16XbI-bqqjuPlIGlHeM57EFf-V82nv9i5", fecha: "Feb 2026" },
+            { nombre: "Versión 2.1", ruta: "https://drive.google.com/uc?export=download&id=1ejIPlsMMEI-MdkkHkRpgawlR_AyOKr8t", fecha: "Ene 2025" },
+            { nombre: "Versión 2.0", ruta: "https://drive.google.com/uc?export=download&id=1ZLRs69QvK2HG3z-uBkRoHA63mVwhjhMv", fecha: "Nov 2025" },
+            { nombre: "Versión 1.5", ruta: "https://drive.google.com/uc?export=download&id=10rTd-KA-3NMn6w-BgmwbxorE7KGfBepk", fecha: "Oct 2025" }
+            ]
+        },
+        { 
         id: "ensayos-cel-1-10", 
         titulo: "Ensayos 1-10 (Público)", 
         desc: "Infraestructura y Red de Metros.", 
@@ -24,20 +27,37 @@ const bibliotecaArchivos = [
         tipo: "pdf",
         versiones: [
             { nombre: "Vision y Pilares", ruta: "https://drive.google.com/uc?export=download&id=12r3-ytfTGv1F8wzR9CE3ed0KNXzyAYGx", fecha: "" },
-            { nombre: "Analisis Estrategico", ruta: "https://drive.google.com/uc?export=download&id=1YyKd1AO5BcJTGgreCO73ah6foNo0lj4v", fecha: "" }
-        ]
-    },
-    { 
+            { nombre: "Analisis Estrategico", ruta: "https://drive.google.com/uc?export=download&id=1YyKd1AO5BcJTGgreCO73ah6foNo0lj4v", fecha: "" },
+            { nombre: "Actores Clave", ruta: "https://drive.google.com/uc?export=download&id=1CeMEQ8g6uzfgiOMzYdCrOF2-Smn7s6Uo", fecha: "" },
+            { nombre: "Obstaculos y Riesgos", ruta: "https://drive.google.com/uc?export=download&id=1BsK-9r3Nm7ejBVn2SAiS9lZLDxGO_zLZ", fecha: "" },
+            { nombre: "Escenarios", ruta: "https://drive.google.com/uc?export=download&id=1SieNuN7mhjzK2JYSJGztAnJFNjiq2dh2", fecha: "" },
+            { nombre: "Recursos", ruta: "https://drive.google.com/uc?export=download&id=1RH7F-yrdMxjwKLw5gyAMnCU841o2o12o", fecha: "" },
+            { nombre: "Industria Creativa", ruta: "https://drive.google.com/uc?export=download&id=1lttZJQ3Jn_wX0HJ7qhVteg7HRSItVB-h", fecha: "" },
+            { nombre: "Arte y Plataforma Cultural", ruta: "https://drive.google.com/uc?export=download&id=1_3Tcj_MHXu9iXyZb5jctOTdQWRAIV6mD", fecha: "" },
+            { nombre: "Transformación del Transporte", ruta: "https://drive.google.com/uc?export=download&id=1b7VWWrhV3TBc7FPuymQFFWL3t156TSh4", fecha: "" },
+            { nombre: "Reforma Politica", ruta: "https://drive.google.com/uc?export=download&id=1mReB5Ra-12oXwJ9TnSxG66k4w01u2333", fecha: "" }
+            ]
+        },
+        { 
         id: "ensayos-cel-11-20", 
         titulo: "Ensayos 11-20 (Público)", 
         desc: "Principios filosóficos del proyecto.", 
         cat: "FILOSOFÍA",
         tipo: "pdf",
         versiones: [
-            { nombre: "Atracción de Capital Humano", ruta: "https://drive.google.com/uc?export=download&id=1uVcY6nYwSirJZ9lhEK0n9X_PMpcmax97", fecha: "" }
-        ]
-    }
-];
+            { nombre: "Atracción de Capital Humano", ruta: "https://drive.google.com/uc?export=download&id=1uVcY6nYwSirJZ9lhEK0n9X_PMpcmax97", fecha: "" },
+            { nombre: "Estrategias Conductuales e Incentivos", ruta: "https://drive.google.com/uc?export=download&id=1Xjbr3HVE9BlGicpladVTz1pLqMHDDg8h", fecha: "" },
+            { nombre: "Integración TLC y APE", ruta: "https://drive.google.com/uc?export=download&id=1aqZpUiYf_HxUgPXGGu98MTrUvVBXowuo", fecha: "" },
+            { nombre: "Transformación Productiva Incentivada", ruta: "https://drive.google.com/uc?export=download&id=1l8dLHbPI8ZWeiIQUD0dof5X7u4q_5aPn", fecha: "" },
+            { nombre: "Reforma Nacional RENT", ruta: "https://drive.google.com/uc?export=download&id=1UmKlXz-k6URIh9dWVdlqrk3uMXGshMRd", fecha: "" },
+            { nombre: "Reforma Judicial", ruta: "https://drive.google.com/uc?export=download&id=1roJs_evPHg_-2efjUKMeYxqueoeNvEMF", fecha: "" },
+            { nombre: "Cuestiones Criticas", ruta: "https://drive.google.com/uc?export=download&id=1Pln9ETgPV4v169FRa5VRaHq4eIUijm3C", fecha: "" },
+            { nombre: "Activación de Licencias", ruta: "https://drive.google.com/uc?export=download&id=1qYV7mQtvHtDctKsk04e-RLyCP8xYsR6m", fecha: "" },
+            { nombre: "Ordenamiento Juridico y Territorial", ruta: "https://drive.google.com/uc?export=download&id=1AUxT_Syaa7P9FUwNAcCUPDYLU1mqi3yV", fecha: "" },
+            { nombre: "Blindaje Tactico", ruta: "https://drive.google.com/uc?export=download&id=1COBG8N3uY1FyVuzo50Dv8d4oP8HVOj3-" }
+            ]
+        }
+    ];
 
 // --- LÓGICA DEL HERO MULTIMEDIA ---
 function initHeroMedia() {
