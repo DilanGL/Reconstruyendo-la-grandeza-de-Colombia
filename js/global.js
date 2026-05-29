@@ -42,7 +42,7 @@ const bibliotecaArchivos = [
         id: "ensayos-cel-11-20", 
         titulo: "Ensayos 11-20 (Público)", 
         desc: "Principios filosóficos del proyecto.", 
-        cat: "FILOSOFÍA",
+        cat: "TÉCNICO",
         tipo: "pdf",
         versiones: [
             { nombre: "Atracción de Capital Humano", ruta: "https://drive.google.com/uc?export=download&id=1uVcY6nYwSirJZ9lhEK0n9X_PMpcmax97", fecha: "" },
@@ -58,6 +58,21 @@ const bibliotecaArchivos = [
             ]
         }
     ];
+
+// --- FUNCIÓN AUXILIAR PARA GENERAR RUTA DE VISTA PREVIA ---
+// Toma la URL de descarga y extrae el ID para transformarlo en enlace de visualización
+function obtenerRutaVer(rutaDescarga) {
+    try {
+        const urlObj = new URL(rutaDescarga);
+        const id = urlObj.searchParams.get("id");
+        if (id) {
+            return `https://drive.google.com/file/d/${id}/preview`;
+        }
+    } catch (e) {
+        console.error("Error procesando la URL de Drive:", e);
+    }
+    return rutaDescarga;
+}
 
 // --- LÓGICA DEL HERO MULTIMEDIA ---
 function initHeroMedia() {
