@@ -49,7 +49,7 @@ function initHeroMedia() {
     // Asignar recursos base en segundo plano
     image.src = imagePath;
     if (videoPath && videoPath !== "") {
-        video.querySelector('source').src = videoPath;
+        video.src = videoPath;
         video.load();
     }
     
