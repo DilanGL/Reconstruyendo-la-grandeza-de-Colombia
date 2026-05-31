@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Participación Ciudadana - Grandeza Colombia</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .survey-card.selected { border-color: #2563eb; background-color: #f8fafc; }
         .tab-content { display: none; }
         .tab-content.active { display: block; animation: fadeIn 0.4s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
+</head>
 <body class="bg-slate-50 text-slate-900 font-sans">
 
     <div id="navbar-container"></div>
@@ -41,7 +42,7 @@
 
             <div id="option-pqrs" onclick="selectSurvey('pqrs')" class="survey-card cursor-pointer bg-white p-6 rounded-2xl border-2 border-transparent shadow-sm hover:shadow-md transition-all">
                 <div class="flex items-center gap-4 mb-3">
-                    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-comments-encryption"></i></div>
+                    <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center"><i class="fa-solid fa-comments"></i></div>
                     <h3 class="font-bold text-base text-slate-800">Sugerencias y PQRS</h3>
                 </div>
                 <p class="text-xs text-slate-500 leading-relaxed">Radicar propuestas ciudadanas, quejas, reclamos o ideas libres.</p>
@@ -64,16 +65,23 @@
                 </div>
             </div>
 
-            <div id="survey-pqrs" class="tab-content p-8 text-center py-16">
-                <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fa-solid fa-toolbox text-2xl"></i>
+            <!-- NUEVO BUZÓN TOTALMENTE INTEGRADO -->
+            <div id="survey-pqrs" class="tab-content p-2">
+                <div class="p-4 bg-emerald-50 text-emerald-700 text-sm font-medium flex items-center gap-2 mb-4">
+                    <i class="fa-solid fa-comments"></i> Buzón Ciudadano y PQRS
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 mb-2">Buzón Ciudadano en Construcción</h4>
-                <p class="text-slate-500 text-sm max-w-md mx-auto mb-6">Estamos parametrizando el sistema de radicación en la base de datos para ofrecerte seguimiento con llaves criptográficas de tu sugerencia.</p>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
-                    Próximo Módulo Integrado
-                </span>
+                
+                <div class="text-center md:text-left px-4 mb-4">
+                    <h4 class="text-base font-bold text-slate-900">Buzón de Sugerencias y PQRS</h4>
+                    <p class="text-slate-500 text-xs mt-0.5">Participa activamente en el ajuste de la hoja de ruta nacional.</p>
+                </div>
+
+                <div class="aspect-[4/5] md:aspect-video w-full">
+                    <!-- REEMPLAZA ESTA URL CON TU ENLACE DE GOOGLE FORM GENERADO -->
+                    <iframe src="https://forms.gle/ha5TZTtdNbgdm7R79" width="100%" height="100%" frameborder="0">Cargando…</iframe>
+                </div>
             </div>
+
         </div>
     </section>
 
