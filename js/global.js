@@ -348,4 +348,13 @@ window.addEventListener('load', () => {
         cargarNavbar();
         initHeroMedia();
         cargarBiblioteca();
+
+        // --- DETECTAR Y ACTIVAR LA ENCUESTA CORRECTA DESDE LA URL ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const surveyParam = urlParams.get('survey');
+
+        // Si la URL contiene ?survey= y es una de las tres opciones, la activamos
+        if (surveyParam && ['new', 'known', 'pqrs'].includes(surveyParam)) {
+            selectSurvey(surveyParam);
+        }
 });
