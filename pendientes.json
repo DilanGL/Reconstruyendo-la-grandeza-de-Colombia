@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "seccion": "Visión",
+    "descripcion": "CONCEPTUAL: Separar tajantemente que la Reforma Nacional RENT está orientada exclusivamente a la revisión de los procesos educativos, mientras que la consola SIAV se enfoca estrictamente en el transporte y la movilidad.",
+    "prioridad": "Alta"
+  },
+  {
+    "id": 2,
+    "seccion": "Visión",
+    "descripcion": "UI/UX: Reemplazar los contenedores vacíos (.image-placeholder) de la Red de Transporte y la Ciudad Universitaria por gráficos estadísticos vectoriales (SVG) o mapas conceptuales dinámicos.",
+    "prioridad": "Media"
+  },
+  {
+    "id": 3,
+    "seccion": "Index",
+    "descripcion": "MULTIMEDIA: Corregir la ruta de la imagen principal del Hero (el enlace actual de Google User Content está roto o es temporal) por un recurso funcional o local.",
+    "prioridad": "Alta"
+  },
+  {
+    "id": 4,
+    "seccion": "Index",
+    "descripcion": "CÓDIGO (Optimización): Modificar la función switchMedia('img') en global.js para enviar un postMessage de pausa ('pauseVideo') al iframe de YouTube, evitando que el audio se siga escuchando al regresar a la vista de imagen.",
+    "prioridad": "Media"
+  },
+  {
+    "id": 5,
+    "seccion": "Index -> Visión",
+    "descripcion": "NAVEGACIÓN: Aprovechar el lector de parámetros de global.js (?tab=) y cambiar los enlaces de los pilares del Home para que apunten directamente a sus pestañas correspondientes (ej: vision.html?tab=eje-educacion).",
+    "prioridad": "Media"
+  },
+  {
+    "id": 6,
+    "seccion": "Participación",
+    "descripcion": "CÓDIGO (Bug): Corregir el conflicto de IDs en la función selectSurvey(). El JS busca elementos con el prefijo 'tab-' (como tab-new, tab-pqrs) para aplicar la clase .selected, pero en el HTML tienen el ID 'option-new' y 'option-pqrs'. Sincronizarlos.",
+    "prioridad": "Alta"
+  },
+  {
+    "id": 7,
+    "seccion": "Participación",
+    "descripcion": "CONTENIDO / UX: Cambiar los títulos rígidos de las pestañas por llamados a la acción más empáticos y cercanos ('Quiero conocer la iniciativa', 'Quiero aportar ideas avanzadas', 'Tu Buzón Ciudadano').",
+    "prioridad": "Media"
+  },
+  {
+    "id": 8,
+    "seccion": "Repositorio",
+    "descripcion": "UI/UX: Asegurar que el contenedor principal de las tarjetas tenga el ID 'grid-archivos' para que cargarBiblioteca() funcione, e incluir un campo de texto estático (<input>) en la parte superior para simular un buscador de módulos.",
+    "prioridad": "Media"
+  },
+  {
+    "id": 9,
+    "seccion": "Repositorio",
+    "descripcion": "CONTENIDO: Enriquecer el objeto bibliotecaArchivos en global.js añadiendo etiquetas o subtextos breves a las descripciones para guiar al ciudadano sobre por qué ensayo empezar según su nivel (básico, intermedio, avanzado).",
+    "prioridad": "Baja"
+  }
+]
