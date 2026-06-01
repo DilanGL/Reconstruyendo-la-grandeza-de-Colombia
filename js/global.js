@@ -345,16 +345,45 @@ function selectSurvey(type) {
 
 // Ejecución al cargar la página
 window.addEventListener('load', () => {
-        cargarNavbar();
-        initHeroMedia();
-        cargarBiblioteca();
+    cargarNavbar();
+    initHeroMedia();
+    cargarBiblioteca();
 
-        // --- DETECTAR Y ACTIVAR LA ENCUESTA CORRECTA DESDE LA URL ---
-        const urlParams = new URLSearchParams(window.location.search);
-        const surveyParam = urlParams.get('survey');
+    const urlParams = new URLSearchParams(window.location.search);
 
-        // Si la URL contiene ?survey= y es una de las tres opciones, la activamos
-        if (surveyParam && ['new', 'known', 'pqrs'].includes(surveyParam)) {
-            selectSurvey(surveyParam);
+    // 1. CONTROL DE ENCUESTAS (?survey=)
+    const surveyParam = urlParams.get('survey');
+    if (surveyParam && ['new', 'known', 'pqrs'].includes(surveyParam)) {
+        selectSurvey(surveyParam);
+    }
+
+    // 2. CONTROL DE PESTAÑAS DE VISIÓN Y PROPUESTAS (?tab=)
+    const tabParam = urlParams.get('tab');
+    if (tabParam) {
+        // Desactivar otros contenidos de pestañas activos (sin tocar las encuestas)
+        document.querySelectorAll('.tab-content, .vision-tab-content').forEach(el => {
+            if (!el.id.startsWith('survey-')) {
+                el.classList.remove('active');
+            }
+        });
+
+        // Desactivar otros botones de navegación activos
+        document.querySelectorAll('.vision-btn, .survey-card').forEach(el => {
+            if (!el.id.startsWith('option-')) {
+                el.classList.remove('active', 'selected', 'border-blue-600');
+            }
+        });
+
+        // Intentar activar el contenedor de contenido correspondiente por su ID
+        const targetTab = document.getElementById(`content-${tabParam}`) || document.getElementById(tabParam);
+        // Intentar activar el botón de navegación correspondiente por su ID
+        const targetCard = document.getElementById(`tab-btn-${tabParam}`) || document.getElementById(`option-${tabParam}`);
+
+        if (targetTab) {
+            targetTab.classList.add('active');
         }
+        if (targetCard) {
+            targetCard.classList.add('selected', 'active');
+        }
+    }
 });
