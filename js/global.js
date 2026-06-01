@@ -343,11 +343,58 @@ function selectSurvey(type) {
     }
 }
 
+async function renderizarPendientes() {
+    try {
+        // Al ser un archivo local, el fetch es instantáneo y no requiere APIs externas
+        const respuesta = await fetch('pendientes.json');
+        if (!respuesta.ok) return; // Si borras el archivo en producción, simplemente no muestra nada
+        
+        const pendientes = await respuesta.json();
+        if (pendientes.length === 0) return;
+
+        // Creamos el contenedor fijo en la esquina inferior con Tailwind
+        const panel = document.createElement('div');
+        panel.className = "fixed bottom-4 right-4 z-50 bg-slate-950 text-white p-4 rounded-2xl shadow-2xl max-w-xs border border-slate-800 font-sans text-xs space-y-3 animate-fade-in";
+        
+        let htmlContenido = `
+            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                <span class="font-bold tracking-wide uppercase text-blue-500 flex items-center gap-1.5">
+                    <i class="fa-solid fa-list-check"></i> Pendientes de Diseño
+                </span>
+                <button onclick="this.parentElement.parentElement.remove()" class="text-slate-500 hover:text-white transition-colors">✕</button>
+            </div>
+            <div class="max-h-52 overflow-y-auto space-y-2 pr-1 text-[11px]">
+        `;
+
+        pendientes.forEach(item => {
+            const barraColor = item.prioridad === 'Alta' ? 'border-red-500' : 'border-yellow-500';
+            htmlContenido += `
+                <div class="p-2.5 bg-slate-900 rounded-xl border-l-2 ${barraColor} border-opacity-80">
+                    <div class="flex justify-between font-semibold text-[10px] text-slate-400 mb-1">
+                        <span>Pestaña: ${item.seccion}</span>
+                        <span class="uppercase text-[9px] tracking-wider px-1.5 py-0.5 rounded ${item.prioridad === 'Alta' ? 'bg-red-950 text-red-400' : 'bg-yellow-950 text-yellow-400'}">${item.prioridad}</span>
+                    </div>
+                    <p class="text-slate-300 leading-relaxed font-medium">${item.descripcion}</p>
+                </div>
+            `;
+        });
+
+        htmlContenido += `</div>`;
+        panel.innerHTML = htmlContenido;
+        document.body.appendChild(panel);
+
+    } catch (error) {
+        // Silencioso: si el archivo no existe o está vacío, el usuario final no notará nada
+        console.log("Modo producción o pendientes vacíos.");
+    }
+}
+
 // Ejecución al cargar la página
 window.addEventListener('load', () => {
-    cargarNavbar();
-    initHeroMedia();
-    cargarBiblioteca();
+        cargarNavbar();
+        initHeroMedia();
+        cargarBiblioteca();
+        renderizarPendientes();
 
     const urlParams = new URLSearchParams(window.location.search);
 
