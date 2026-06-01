@@ -396,6 +396,8 @@ window.addEventListener('load', () => {
         cargarBiblioteca();
         renderizarPendientes();
 
+        document.body.classList.add("pt-24");
+
     const urlParams = new URLSearchParams(window.location.search);
 
     // 1. CONTROL DE ENCUESTAS (?survey=)
