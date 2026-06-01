@@ -1,29 +1,30 @@
-<nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-            <!-- LOGO -->
-            <a href="index.html" class="font-bold text-xl tracking-tight text-slate-900">Grandeza<span class="text-blue-600">Colombia</span></a>
-            
-            <!-- 1. MENÚ PARA PC (Invisible en celular, se muestra en horizontal en PC) -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" data-link="index" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
-                <a href="vision.html" data-link="vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Propuestas y Visión</a>
-                <a href="repositorio.html" data-link="repositorio" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Repositorio</a>
-                <a href="participacion.html" data-link="participacion" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Participación</a>
+<nav class="sticky top-0 z-50 w-full pt-4 px-4 sm:px-6 lg:px-8 pointer-events-none">
+    
+    <div class="max-w-7xl mx-auto bg-white/80 backdrop-blur-md border border-slate-200/60 shadow-lg rounded-2xl pointer-events-auto overflow-hidden transition-all duration-300">
+        
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="index.html" class="font-bold text-xl tracking-tight text-slate-900">Grandeza<span class="text-blue-600">Colombia</span></a>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" data-link="index" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
+                    <a href="vision.html" data-link="vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Propuestas y Visión</a>
+                    <a href="repositorio.html" data-link="repositorio" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Repositorio</a>
+                    <a href="participacion.html" data-link="participacion" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Participación</a>
+                </div>
+
+                <button onclick="toggleMobileMenu()" class="block md:hidden text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
             </div>
-
-            <!-- BOTÓN HAMBURGUESA (Solo visible en celulares) -->
-            <button onclick="toggleMobileMenu()" class="block md:hidden text-slate-600 hover:text-blue-600 focus:outline-none p-2 rounded-lg hover:bg-slate-100 transition-colors">
-                <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
-            </button>
         </div>
-    </div>
 
-    <!-- 2. MENÚ PARA CELULAR (Totalmente independiente, vertical en lista y flotante) -->
-    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white/95 border-b border-slate-200 p-4 flex flex-col space-y-3 shadow-lg z-50">
-        <a href="index.html" data-link="index" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
-        <a href="vision.html" data-link="vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Propuestas y Visión</a>
-        <a href="repositorio.html" data-link="repositorio" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Repositorio</a>
-        <a href="participacion.html" data-link="participacion" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Participación</a>
+        <div id="mobile-menu" class="hidden w-full bg-white/95 border-t border-slate-100 p-4 flex flex-col space-y-3 z-50">
+            <a href="index.html" data-link="index" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Inicio</a>
+            <a href="vision.html" data-link="vision" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Propuestas y Visión</a>
+            <a href="repositorio.html" data-link="repositorio" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Repositorio</a>
+            <a href="participacion.html" data-link="participacion" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Participación</a>
+        </div>
+
     </div>
 </nav>
