@@ -360,30 +360,31 @@ window.addEventListener('load', () => {
     // 2. CONTROL DE PESTAÑAS DE VISIÓN Y PROPUESTAS (?tab=)
     const tabParam = urlParams.get('tab');
     if (tabParam) {
-        // Desactivar otros contenidos de pestañas activos (sin tocar las encuestas)
-        document.querySelectorAll('.tab-content, .vision-tab-content').forEach(el => {
+        // Desactivar todos los contenidos de pestañas activos
+        document.querySelectorAll('.tab-content').forEach(el => {
             if (!el.id.startsWith('survey-')) {
                 el.classList.remove('active');
             }
         });
 
-        // Desactivar otros botones de navegación activos
-        document.querySelectorAll('.vision-btn, .survey-card').forEach(el => {
-            if (!el.id.startsWith('option-')) {
-                el.classList.remove('active', 'selected', 'border-blue-600');
-            }
+        // Desactivar todos los estilos de los enlaces/botones de pestañas
+        document.querySelectorAll('.tab-link').forEach(el => {
+            el.classList.remove("border-blue-600", "text-blue-600");
+            el.classList.add("border-transparent", "text-slate-500");
         });
 
-        // Intentar activar el contenedor de contenido correspondiente por su ID
-        const targetTab = document.getElementById(`content-${tabParam}`) || document.getElementById(tabParam);
-        // Intentar activar el botón de navegación correspondiente por su ID
-        const targetCard = document.getElementById(`tab-btn-${tabParam}`) || document.getElementById(`option-${tabParam}`);
+        // Intentar activar el contenedor correspondiente
+        const targetTab = document.getElementById(tabParam);
+        // Intentar activar el botón correspondiente
+        const targetBtn = document.getElementById(`tab-btn-${tabParam}`);
 
         if (targetTab) {
             targetTab.classList.add('active');
         }
-        if (targetCard) {
-            targetCard.classList.add('selected', 'active');
+        
+        if (targetBtn) {
+            targetBtn.classList.remove("border-transparent", "text-slate-500");
+            targetBtn.classList.add("border-blue-600", "text-blue-600");
         }
     }
 });
