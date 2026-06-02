@@ -229,26 +229,6 @@ function cambiarVersion(select, id) {
     document.getElementById(`descargar-${id}`).href = rutaDescarga;
 }
 
-// --- SELECCIÓN DE ENCUESTAS ---
-function selectSurvey(type) {
-    const optNew = document.getElementById('option-new');
-    const optKnown = document.getElementById('option-known');
-    const surveyNew = document.getElementById('survey-new');
-    const surveyKnown = document.getElementById('survey-known');
-
-    if (type === 'new') {
-        optNew.classList.add('selected');
-        optKnown.classList.remove('selected');
-        surveyNew.classList.add('active');
-        surveyKnown.classList.remove('active');
-    } else {
-        optKnown.classList.add('selected');
-        optNew.classList.remove('selected');
-        surveyKnown.classList.add('active');
-        surveyNew.classList.remove('active');
-    }
-}
-
 // --- CONTROL DEL MENÚ DE NAVEGACIÓN EN MÓVILES ---
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
@@ -313,33 +293,39 @@ function toggleMobileMenu() {
     }
 }
 
-// --- PORTAL DE PARTICIPACIÓN (CONTROL DE PESTAÑAS) ---
+// --- PORTAL DE PARTICIPACIÓN (CONTROL DE PESTAÑAS Y CARGA PEREZOSA) ---
 function selectSurvey(type) {
     const targetTab = document.getElementById(`survey-${type}`);
     const targetCard = document.getElementById(`option-${type}`);
     
-    // Si no existen estos elementos en la página actual (ej. estamos en index.html), 
-    // detenemos la función de inmediato para evitar errores en la consola.
+    // Si no existen estos elementos en la página actual, detenemos la función
     if (!targetTab || !targetCard) return;
 
-    // Desactivar todas las pestañas y quitar selecciones previas
+    // 1. Desactivar todas las pestañas y quitar selecciones previas
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.survey-card').forEach(el => {
         el.classList.remove('selected', 'border-blue-600');
-        el.style.borderColor = 'transparent'; // Limpia bordes personalizados
+        el.style.borderColor = 'transparent';
     });
     
-    // Activar la pestaña y tarjeta seleccionada
+    // 2. Activar la pestaña y tarjeta seleccionada
     targetTab.classList.add('active');
     targetCard.classList.add('selected');
     
-    // Aplicar el color de borde correspondiente según la tarjeta
+    // 3. Aplicar colores según el perfil
     if (type === 'new') {
         targetCard.classList.add('border-blue-600');
     } else if (type === 'known') {
-        targetCard.style.borderColor = '#9333ea'; // Púrpura estratégico
+        targetCard.style.borderColor = '#9333ea';
     } else if (type === 'pqrs') {
-        targetCard.style.borderColor = '#059669'; // Esmeralda institucional
+        targetCard.style.borderColor = '#059669';
+    }
+
+    // 4. LA MEJORA: Carga Perezosa (Lazy Loading) del iFrame
+    const iframe = targetTab.querySelector('iframe');
+    // Si el iframe tiene un 'data-src' pero no tiene un 'src' aún, lo cargamos
+    if (iframe && iframe.getAttribute('data-src') && !iframe.getAttribute('src')) {
+        iframe.setAttribute('src', iframe.getAttribute('data-src'));
     }
 }
 
