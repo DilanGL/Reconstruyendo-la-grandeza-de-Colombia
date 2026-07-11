@@ -24,7 +24,9 @@ window.addEventListener('load', () => {
         window.miCarrusel = new ModuloCarousel('fuente-diapositivas', 'slide-contenido', 'slide-contador');
     }
 
-    document.body.classList.add("pt-24");
+    if (!window.location.pathname.includes('/modulos/')) {
+        document.body.classList.add("pt-24");
+    }
 
     const urlParams = new URLSearchParams(window.location.search);
 
