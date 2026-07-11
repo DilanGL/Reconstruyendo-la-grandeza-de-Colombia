@@ -1,4 +1,4 @@
-import { cargarNavbar, cargarModulosRepositorio, openTab } from './modules/ui.js';
+import { cargarNavbar, cargarModulosRepositorio, openTab, toggleMobileMenu } from './modules/ui.js';
 import { initHeroMedia, switchMedia } from './modules/hero.js';
 import { selectSurvey, renderizarPendientes } from './modules/participacion.js';
 // Importamos las utilidades generales de los módulos

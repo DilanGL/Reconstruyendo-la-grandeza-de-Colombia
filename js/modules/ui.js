@@ -73,10 +73,24 @@ export async function cargarNavbar() {
     if (!contenedor) return;
 
     try {
-        const navbarUrl = new URL('/components/navbar.html', window.location.href);
-        const respuesta = await fetch(navbarUrl);
-        if (!respuesta.ok) throw new Error("No se pudo cargar el menú");
-        const htmlNav = await respuesta.text();
+        const candidates = [
+            new URL('./components/navbar.html', window.location.href),
+            new URL('../components/navbar.html', window.location.href),
+            new URL('/components/navbar.html', window.location.href)
+        ];
+
+        let respuesta;
+        let htmlNav = null;
+
+        for (const candidate of candidates) {
+            respuesta = await fetch(candidate);
+            if (respuesta.ok) {
+                htmlNav = await respuesta.text();
+                break;
+            }
+        }
+
+        if (!htmlNav) throw new Error("No se pudo cargar el menú");
         
         contenedor.innerHTML = htmlNav;
 
