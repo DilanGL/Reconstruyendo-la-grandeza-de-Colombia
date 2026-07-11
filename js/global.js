@@ -8,6 +8,7 @@ import { initTabsGenericas, ModuloCarousel } from './modules/modulos-manager.js'
 window.openTab = openTab;
 window.switchMedia = switchMedia;
 window.selectSurvey = selectSurvey;
+window.toggleMobileMenu = toggleMobileMenu;
 
 // --- ESCUCHA CENTRALIZADA AL CARGAR LA PÁGINA ---
 window.addEventListener('load', () => {

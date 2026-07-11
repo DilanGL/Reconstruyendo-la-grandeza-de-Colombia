@@ -73,7 +73,8 @@ export async function cargarNavbar() {
     if (!contenedor) return;
 
     try {
-        const respuesta = await fetch('components/navbar.html');
+        const navbarUrl = new URL('/components/navbar.html', window.location.href);
+        const respuesta = await fetch(navbarUrl);
         if (!respuesta.ok) throw new Error("No se pudo cargar el menú");
         const htmlNav = await respuesta.text();
         
