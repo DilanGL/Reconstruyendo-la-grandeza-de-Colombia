@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Interactivo - Grandeza Colombia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans min-h-screen flex flex-col overflow-hidden">
+
+    <div id="navbar-container"></div>
+
+    <div data-tabs-group class="flex flex-1 overflow-hidden h-[calc(100vh-64px)]">
+        
+        <aside class="w-full md:w-[450px] bg-white border-r border-slate-200 flex flex-col h-full shadow-sm">
+            
+            <div class="p-6 border-b border-slate-200 bg-slate-50/50">
+                <a href="../repositorio.html" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-700 mb-3 transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i> Volver al Repositorio
+                </a>
+                <span class="block text-xs font-bold uppercase tracking-wider text-emerald-600 mb-1">Módulo 2.3</span>
+                <h1 class="text-xl font-bold text-slate-900 tracking-tight">Justicia Preventiva y RENT</h1>
+            </div>
+
+            <div class="flex border-b border-slate-200 bg-white text-sm">
+                <button data-tab-target="resumen" class="flex-1 py-3 text-center font-semibold border-b-2 border-blue-600 text-blue-600 transition-all">
+                    <i class="fa-solid fa-list-check mr-1"></i> Resumen
+                </button>
+                <button data-tab-target="diapositivas" class="flex-1 py-3 text-center font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">
+                    <i class="fa-solid fa-desktop mr-1"></i> Diapositivas
+                </button>
+                <button data-tab-target="objetivos" class="flex-1 py-3 text-center font-semibold border-b-2 border-transparent text-slate-500 hover:text-slate-800 transition-all">
+                    <i class="fa-solid fa-bullseye mr-1"></i> Datos Clave
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-6 space-y-6 no-scrollbar">
+                
+                <div data-tab-panel="resumen" class="space-y-4">
+                    <h3 class="text-base font-bold text-slate-900">Enfoque Central</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Este módulo se centra en blindar la administración pública invirtiendo el camino crítico tradicional. Implementa herramientas tecnológicas avanzadas para hacer que la corrupción sea técnicamente inviable.
+                    </p>
+                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-blue-800">Sistemas Core:</h4>
+                        <ul class="text-sm text-blue-900 space-y-2">
+                            <li><i class="fa-solid fa-graduation-cap text-blue-600 mr-2"></i><strong>RENT:</strong> Auditoría automatizada orientada a la revisión integral de procesos educativos.</li>
+                            <li><i class="fa-solid fa-microchip text-blue-600 mr-2"></i><strong>Auditoría IA:</strong> Control fiscal algorítmico en tiempo real para el 100% de la contratación.</li>
+                            <li><i class="fa-solid fa-shield-halved text-blue-600 mr-2"></i><strong>Cerco Reputacional:</strong> Alertas públicas que vinculan la viabilidad financiera de contratistas a su comportamiento ético.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div data-tab-panel="diapositivas" class="hidden space-y-4">
+                    <h3 class="text-base font-bold text-slate-900">Presentación Ejecutiva</h3>
+                    
+                    <div class="bg-slate-900 text-white rounded-xl p-6 min-h-[200px] flex flex-col justify-between relative shadow-inner">
+                        <div id="slide-contenido" class="space-y-2"></div>
+                        
+                        <div class="flex justify-between items-center mt-6 pt-3 border-t border-slate-800 text-xs">
+                            <span id="slide-contador" class="text-slate-400 font-medium">Cargando...</span>
+                            <div class="flex gap-2">
+                                <button onclick="window.miCarrusel.navegar(-1)" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button onclick="window.miCarrusel.navegar(1)" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 flex items-center justify-center transition-colors">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="fuente-diapositivas" class="hidden">
+                        <div class="slide-item">
+                            <h4>Despliegue del RENT</h4>
+                            <p>Monitoreo automatizado del ecosistema educativo nacional para asegurar auditorías de procesos eficaces y transparentes.</p>
+                        </div>
+                        <div class="slide-item">
+                            <h4>Fiscalización por IA</h4>
+                            <p>Algoritmos entrenados para auditar en tiempo real el 100% de la contratación pública y los flujos financieros sin intervención humana.</p>
+                        </div>
+                        <div class="slide-item">
+                            <h4>El Cerco Reputacional</h4>
+                            <p>Alertas públicas inmediatas ante anomalías detectadas, bloqueando el músculo financiero de contratistas corruptos bajo presión social.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-tab-panel="objetivos" class="hidden space-y-4">
+                    <h3 class="text-base font-bold text-slate-900">Hoja de Ruta del Módulo</h3>
+                    <p class="text-sm text-slate-600">Reordenamiento estratégico para mitigar la fricción política institucional:</p>
+                    
+                    <div class="space-y-4 border-l-2 border-slate-200 pl-4 ml-2">
+                        <div class="relative">
+                            <div class="absolute -left-[25px] top-1 w-3 h-3 bg-emerald-500 rounded-full ring-4 ring-white"></div>
+                            <h4 class="text-sm font-bold text-slate-900">Fase de Incubación (Años 1-2)</h4>
+                            <p class="text-xs text-slate-600 mt-0.5">Enfoque en initiatives cívicas de baja fricción (Arte, Cultura e Innovación Creativa) para consolidar apoyo social masivo.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute -left-[25px] top-1 w-3 h-3 bg-blue-500 rounded-full ring-4 ring-white"></div>
+                            <h4 class="text-sm font-bold text-slate-900">Capitalización Política (Año 3+)</h4>
+                            <p class="text-xs text-slate-600 mt-0.5">Activación del respaldo de la palanca social para presionar e implementar las reformas legislativas de alta fricción (Justicia Preventiva e IA).</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="p-4 border-t border-slate-200 bg-slate-50">
+                <a href="../docs/MÓDULOS_2.3.pdf" download class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900 text-white text-sm font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-sm">
+                    <i class="fa-solid fa-download"></i> Descargar Documento Completo
+                </a>
+            </div>
+        </aside>
+
+        <main class="flex-1 bg-slate-200 relative h-full w-full" style="min-height: 0;">
+            <iframe 
+                src="../docs/MÓDULOS_2.3.pdf" 
+                width="100%" 
+                height="100%" 
+                style="border: none; min-height: 100%; height: 100vh; width: 100%; display: block;" 
+                title="Visor PDF - Módulo 2.3">
+            </iframe>
+        </main>
+
+    </div>
+
+    <script type="module" src="../js/global.js"></script>
+
+</body>
+</html>
